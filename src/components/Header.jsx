@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { CartContext } from '../Layout/Main'
 
 const Header = () => {
+  const [cart,setCart]=useContext(CartContext)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
     <div className='px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8'>
@@ -52,7 +54,10 @@ const Header = () => {
               title='Cart'
               className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
             >
+              <div className='relative'>
               <p> Cart</p>
+              <small className='bg-[#F3F4F6] rounded-full w-4 flex justify-center absolute -top-2 -right-4 '>{cart.length}</small>
+              </div>
             </Link>
           </li>
           <li>
@@ -147,7 +152,10 @@ const Header = () => {
                         title='Cart'
                         className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'
                       >
-                        <p> Cart</p>
+                        <div className='relative'>
+                          <p> Cart</p>
+                          <small className='bg-[#F3F4F6] rounded-full w-4 flex justify-center absolute -top-3 left-8'>{cart.length}</small>
+                        </div>
                       </Link>
                     </li>
                     <li>
